@@ -23,5 +23,5 @@ test_score.append(english_score)
 print(test_score)
 
 # リストの合計値を計算して表示
-print(sum(test_score))
+print(f"合計点数{sum(test_score)}点")
 
