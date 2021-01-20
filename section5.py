@@ -48,4 +48,17 @@ print(df.mean())
 # 「がく片長さ」列の平均値を計算
 print(df["がく片長さ"].mean())
 
+# 各列の標準偏差
+print(df.std())
 
+# 平均値を求めてデーフレームの欠損値と置き換える
+df = pd.read_csv("iris.csv")
+
+# 各列の平均値を計算してcolumnsに代入
+colmean = df.mean()
+
+# 平均値で欠損値を穴埋めしてdf2に代入
+df2 = df.fillna(colmean)
+
+# 欠損値があるか確認
+print(df2.isnull().any(axis = 0))
