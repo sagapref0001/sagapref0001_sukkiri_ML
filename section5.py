@@ -62,3 +62,10 @@ df2 = df.fillna(colmean)
 
 # 欠損値があるか確認
 print(df2.isnull().any(axis = 0))
+
+# 特徴量と正解データを変数に代入
+xcol = ["がく片長さ","がく片幅","花弁長さ","花弁幅"]
+
+x = df2[xcol]
+t = df2["種類"]
+
