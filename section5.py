@@ -69,3 +69,52 @@ xcol = ["がく片長さ","がく片幅","花弁長さ","花弁幅"]
 x = df2[xcol]
 t = df2["種類"]
 
+# モジュールノインポート
+from sklearn import tree
+
+# モデルの作成
+model = tree.DecisionTreeClassifier(max_depth = 2 ,random_state = 0)
+
+# モデルの学習と正解率の計算
+model.fit(x,t) # モデルの学習
+print(model.score(x , t)) #学習済みモデルの正解率計算
+
+# 訓練データとテストデータに分割する
+from sklearn.model_selection import train_test_split
+
+x_train, x_test, y_train, y_test = train_test_split(x,t, test_size = 0.3, random_state = 0)
+# X_trainとY_trainが学習に利用するデータ
+# X_testとY_testが検証に利用するデータ
+
+# train_test_split関数の結果を確認
+print(x_train.shape)
+print(x_test.shape)
+
+# 訓練データで学習と正解率の計算
+# 訓練データの再訓練
+model.fit(x_train, y_train)
+
+# テストデータの予測結果と実際の答えが合致する正解率を計算
+print(model.score(x_test, y_test))
+
+# モデルを保存する
+import pickle
+with open("irismodel.pkl","wb") as f:
+    pickle.dump(model,f)
+
+# 分岐条件の列を求める
+print(model.tree_.feature)
+
+# 分岐条件のしきい値を含む配列を変えるtree_.threshold
+print(model.tree_.threshold)
+
+# リーフに到達したデータの数を返す tree_.value
+# ノード番号１，３，４に到達したアヤメの種類と数
+print(model.tree_.value[1]) # ノード番号１に到達したとき
+print(model.tree_.value[2]) # ノード番号３に到達したとき
+print(model.tree_.value[4]) # ノード番号４に到達したとき
+
+# classes_でアヤメの種類とグループ番号の対応を調べる
+# アヤメの種類とグループ番号の対応
+print(model.classes_)
+
