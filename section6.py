@@ -13,7 +13,7 @@ print(df2.isnull().any(axis=0))
 # # グラフ描画するためのおまじない(Notebookで実行）
 # %matplotlib inline
 #
-# # SNS2とsalesの散布図の作成
+# # 各特徴値とsalesの散布図の作成
 # df2.plot(kind = "scatter",x = "SNS1", y = "sales")
 # df2.plot(kind = "scatter",x = "SNS2", y = "sales")
 # df2.plot(kind = "scatter",x = "actor", y = "sales")
