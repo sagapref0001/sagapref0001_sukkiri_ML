@@ -119,4 +119,9 @@ print(sex["Survived"])
 # train_score,test_score,model = learn(x,t) #学習
 
 # get_dummies関数で文字列を数値に変換する
-pd.get_dummies[]
+male = pd.get_dummies(df2["Sex"], drop_first = True)
+print(male)
+
+# drop_firstを指定しないget_dummies関数の戻り値
+print(pd.get_dummies(df["Sex"]))
+
